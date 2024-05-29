@@ -1,0 +1,33 @@
+{
+  "DONA MARIA": [
+    "paciente",
+    "gestacional",
+    "donamaria1234"
+  ],
+  "PEDRINHO": [
+    "adiministrador",
+    "-",
+    "senhaadm"
+  ],
+  "MAM\u00c3E": [
+    "profissional de sa\u00fade",
+    "-",
+    "blabla"
+  ],
+  "TESTE_USER": [
+    "profissional de sa\u00fade",
+    "-",
+    "senha f\u00e1cil"
+  ],
+  "MALU": [
+    "adiministrador",
+    "-",
+    "teste1234"
+  ],
+  "JULIA": [
+    "paciente",
+    "diabetes tipo 1",
+    "lalala"
+  ]
+}  ]
+}
