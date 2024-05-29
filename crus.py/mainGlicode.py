@@ -204,7 +204,7 @@ while True:
                                 print("Índice inválido.")
 
 
-                            main()
+                    main()
 
                 case 3:
                     

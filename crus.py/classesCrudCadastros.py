@@ -89,7 +89,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
                 classe.edição_usuário(userName) # contém menu e match de edição do perfil
 
             case 3:
-                with open('crudCadastros.json', 'r+') as database:
+                with open('crus.py/crudCadastros.json', 'r+') as database:
 
                     dicCrud = json.load(database)
                     del dicCrud[userName]           # deleta o perfil
@@ -108,7 +108,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
         from classesCrudCadastros import crud_cadastro # importação da classe "crud_cadastro"
         classeCrud = crud_cadastro # instanciando a classe importada em uma variável a fim de permitir sua utilisação
 
-        with open('crudCadastros.json', 'r+') as database:
+        with open('crus.py/crudCadastros.json', 'r+') as database:
 
             dicCrud = json.load(database)
 
@@ -175,7 +175,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
         password = str(input('\ndigite a sua senha: ')).strip() # faz o input da senha do usuário
         listaIntermediária.append(password) # salva a senha do usuário na lista intermediária
 
-        with open('crudCadastros.json', 'r+') as database:
+        with open('crus.py/crudCadastros.json', 'r+') as database:
 
             dicCrud = json.load(database) 
 
@@ -205,7 +205,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
         password = str(input('\ndigite a sua senha de adiministrador: ')).strip() # faz o input da senha do adiministrador
         listaIntermediária.append(password) # salva a senha do adiministrador na lista intermediária
 
-        with open('crudCadastros.json', 'r+') as database:
+        with open('crus.py/crudCadastros.json', 'r+') as database:
 
             dicCrud = json.load(database) 
 
@@ -236,7 +236,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
 
             userKey = classeInputs.input_string('o nome do usuário a ser consultado') # faz o input do nome do usuário que terá os dados cadastrados
 
-            with open('crudCadastros.json', 'r') as database:
+            with open('crus.py/crudCadastros.json', 'r') as database:
 
                 dicCrud = json.load(database)
 
@@ -272,7 +272,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
             classeCrud.print_users() # print o nome de todos os usuários 
             userDel = classeInputs.input_string('o nome do usuário a ser deletado') # faz o input do nome do usuário que terá seu perfil deletado
 
-            with open('crudCadastros.json', 'r+') as database:
+            with open('crus.py/crudCadastros.json', 'r+') as database:
 
                 dicCrud = json.load(database)
 
@@ -304,7 +304,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
 
             nameLogin = classe.input_string('seu nome de usuário')
 
-            with open('crudCadastros.json', 'r') as database:
+            with open('crus.py/crudCadastros.json', 'r') as database:
 
                 dicCrud = json.load(database)
 
@@ -324,7 +324,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
                 
     def verificação_classe_usuário(key):
 
-        with open('crudCadastros.json') as database:
+        with open('crus.py/crudCadastros.json') as database:
 
             dicCrud = json.load(database)
 
@@ -361,7 +361,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
 
         import json
 
-        with open('crudCadastros.json') as database:
+        with open('crus.py/crudCadastros.json') as database:
 
             dicCrud = json.load(database)
             userProfile = dicCrud[userName]
@@ -374,7 +374,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
 
         import json
 
-        with open('crudCadastros.json') as database:
+        with open('crus.py/crudCadastros.json') as database:
 
             dicCrud = json.load(database)
 
@@ -392,7 +392,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
 
         contador = 0
 
-        with open('crudCadastros.json') as database:
+        with open('crus.py/crudCadastros.json') as database:
 
             dicCrud = json.load(database)
 
@@ -505,14 +505,14 @@ class Funcionalidades:
         def carregar_json():
             global medicamentos  # Permite que a variável medicamentos seja usada globalmente
             try:
-                with open('dados.json', 'r') as file:
+                with open('crus.py/dados.json', 'r') as file:
                     medicamentos = json.load(file)
             except (FileNotFoundError, json.JSONDecodeError):
                 medicamentos = []
 
         def salvar_json():
             objeto_json = json.dumps(medicamentos, indent=4)
-            with open('dados.json', 'w') as file:
+            with open('crus.py/dados.json', 'w') as file:
                 file.write(objeto_json)
 
         def adicionar_medicamentos():
@@ -620,7 +620,7 @@ class Funcionalidades:
     def dicas_saude():
         def carregar_dicas():
             try:
-                with open("dicas_saude.json") as file:
+                with open("crus.py/dicas_saude.json") as file:
                     dicas = json.load(file)
             except FileNotFoundError:
                 dicas = []
@@ -721,13 +721,13 @@ class Funcionalidades:
         json_file = "alimentos.json"
 
         try:
-            with open(json_file, "r") as arquivo:
+            with open('crus.py/json_file', "r") as arquivo:
                 alimentos = json.load(arquivo)
         except FileNotFoundError:
             alimentos = []
 
         def salvar_alimentos():
-            with open(json_file, "w") as arquivo:
+            with open('json_file', "w") as arquivo:
                 json.dump(alimentos, arquivo, ensure_ascii=False, indent=4)
 
         def adicionar_alimento():
@@ -798,7 +798,7 @@ class Funcionalidades:
 
     def agendamento_consultas():
         from time import sleep
-        arquivo = 'consultas.json'
+        arquivo = 'crus.py/consultas.json'
 
         def carregar_dados():
             try:
