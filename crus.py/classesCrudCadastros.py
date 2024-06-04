@@ -622,7 +622,7 @@ class Funcionalidades:
             except FileNotFoundError:
                 dicas = []
                 return dicas
-        # Função principal para exibir o menu e processar as opções 
+        
         def main():
             while True:
                 print("\n=== Dicas para manter um estilo de vida saudável ===")
@@ -637,7 +637,7 @@ class Funcionalidades:
                     break
                 else:
                     print("Opção inválida. Tente novamente.")
-        # Função para exibir todas as dicas
+        
         def exibir_dicas():
             dicas = carregar_dicas()
             if dicas:
@@ -665,7 +665,7 @@ class Funcionalidades:
         else:
             print("\n você está em estado de Hiperglicemia, faça uso da dose adequada de insulina asim que possível")
 
-    def calculador_quant_insulina(glicose, qtd_carbo):  # retorna um valor numérico
+    def calculador_quant_insulina(glicose, qtd_carbo):  
 
         fator_correcao = 50
         glicemia_alvo = 100
@@ -675,7 +675,7 @@ class Funcionalidades:
 
         return unidades_insulina
 
-    def formatacao_unidades_de_isulina(unidades_insulina):  # formata o valor retornado na função anterior
+    def formatacao_unidades_de_isulina(unidades_insulina):  
 
         import math
 
@@ -692,7 +692,7 @@ class Funcionalidades:
 
         return insulina_print
 
-    def monitoramento_consulta():  # calcula o intervalo entre a última consulta e a "data atual", retornando um veedback via print
+    def monitoramento_consulta():  
         data_ultima_consulta = str(input('\ndigite a data da sua última consulta médica (ex: 01/01/2001): ')).strip()
 
         dia_ultima_consulta = int(data_ultima_consulta[:2])
@@ -714,7 +714,7 @@ class Funcionalidades:
         else:
             print('\nparece que você ainda está dentro do prazo recomendado, continue com um bom acompanhamento')
 
-    def calculadora_alimentos():  # mostra a quatidade de carboidratos em determinados alimentos
+    def calculadora_alimentos():  
         json_file = "alimentos.json"
 
         try:
@@ -861,15 +861,15 @@ class Funcionalidades:
         def excluir_consulta():
             cpf_paciente = input('Digite o CPF a ser excluído: ')
             consultas = carregar_dados()
-        # quais sao os novos intem dessa lista ? 1º consulta      # Mas quem é consulta ? consulta é cad intem dentro de consultas
-            consultas_atualizadas = [consulta for consulta in consultas if consulta['cpf'] != cpf_paciente]  # (List Comprehension)   #1º cosulta (sao os intem deassa nova lista )  2º consulta (especifica quem é o 1º consulta )
+        
+            consultas_atualizadas = [consulta for consulta in consultas if consulta['cpf'] != cpf_paciente]  
 
             if len(consultas) != len(consultas_atualizadas):
                 salvar_dados(consultas_atualizadas)
                 print("CONSULTA EXCLUÍDA COM SUCESSO!")
             else:
                 print("CONSULTA NÃO ENCONTRADA.")
-        # Funções de teste
+
         def main():
             while True:
                 print("\nEscolha uma opção:")
@@ -898,7 +898,7 @@ class Funcionalidades:
 
         main()
        
-    def menu_funcionalidades_paciente():  # retorna uma string
+    def menu_funcionalidades_paciente():  
 
         while True:
             user_choise = str(input('\nselecione a funcionalidade que você deseja utilizar\n\n[1] perfil\n[2] calculadora de carboidratos\n[3] calculadora de alimentos\n[4] situação da glicemia\n[5] monitoramento de  consultas\n[6] agendamento de consultas\n[7] dicas\n[8] diario remédios\n[9] retornar ao menu anterior\n\n')).strip()
@@ -915,7 +915,7 @@ class Funcionalidades:
 
         return user_choise
 
-    def verificacao_de_prossegimento(complemento_pergunta, complemento_negacao):  # retorna um inteiro
+    def verificacao_de_prossegimento(complemento_pergunta, complemento_negacao):  
 
         while True:
 
