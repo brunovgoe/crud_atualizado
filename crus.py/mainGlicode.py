@@ -149,7 +149,7 @@ while True:
                         # Função para carregar os dados do arquivo JSON
                     def carregar_dicas():
                             try:
-                                with open("dicas_saude.json", "r") as file:
+                                with open("crus.py/dicas_saude.json", "r") as file:
                                     dicas = json.load(file)
                             except FileNotFoundError:
                                 dicas = []
@@ -168,7 +168,7 @@ while True:
                                 print("Nenhuma dica encontrada.")
                         # Função para salvar os dados no arquivo JSON
                     def salvar_dicas(dicas):
-                            with open("dicas_saude.json", "w") as file: 
+                            with open("crus.py/dicas_saude.json", "w") as file: 
                                 json.dump(dicas, file, indent=4) #dump converte arquivos p/ python
                         # Função para adicionar uma nova dica
                     def adicionar_dica():
