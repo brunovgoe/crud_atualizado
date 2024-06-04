@@ -1,12 +1,10 @@
-import json # biblioteca pra manipulação do arquivo json
+import json 
 
-#obs: os parâmetros "self" dentro das funções não serão cobrados no momento da execução.
-#Eles servem para que a máquina entenda que esta função está dentro de uma classe, sendo o parâmetro "self"
-#a representação da mesma.
 
-class crud_cadastro: # classe para as funções mais diretamente relacionadas com o crud de cadastros
 
-    def menuFuncionalidadesProfissionalDeSaúde(): # menu para as funcionalidades do profissional de saúde
+class crud_cadastro: 
+
+    def menuFuncionalidadesProfissionalDeSaúde(): 
 
         while True:
 
@@ -24,9 +22,9 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
             else:
                 print('\nvalor inválido, tente novamente')
 
-        return userChoise # retorna um valor inteiro que será posteriormente utilisado no "match" dessas opções
+        return userChoise 
 
-    def menuFuncionalidadesAdm(): # menu de funncionalidades do usuário administrador
+    def menuFuncionalidadesAdm(): 
 
         while True:       
         
@@ -50,9 +48,9 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
 
                 print('\nresposta inválida, tente novamente')
 
-        return userChoise # retorna um valor inteiro que será posteriormente utilisado no "match" dessas opções
+        return userChoise 
     
-    def menuPerfilUsuário(): # menu de opções relacionadas ao perfil de um usuário qualquer
+    def menuPerfilUsuário(): 
 
         while True:
 
@@ -70,29 +68,29 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
             except:
                 print('\nresposta inválida, tente novamente')
 
-        return userChoise # retorna um valor inteiro que será posteriormente utilisado no "match" dessas opções
+        return userChoise 
     
     def matchPerfilUsuário(userChoise, userName): 
         
-        # "match" dos valores retornados na função "menuPerfilUsuário"
+        
 
-        from classesCrudCadastros import crud_cadastro # importação da classe "crud_cadastro"
-        classe = crud_cadastro # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+        from classesCrudCadastros import crud_cadastro 
+        classe = crud_cadastro 
 
         match userChoise:
 
             case 1:
-                classe.print_user_user(userName) # printa os dados do usuário no terminal, incluindo a senha
+                classe.print_user_user(userName) 
 
             case 2:
 
-                classe.edição_usuário(userName) # contém menu e match de edição do perfil
+                classe.edição_usuário(userName) 
 
             case 3:
                 with open('crus.py/crudCadastros.json', 'r+') as database:
 
                     dicCrud = json.load(database)
-                    del dicCrud[userName]           # deleta o perfil
+                    del dicCrud[userName]           
                     database.seek(0)
                     json.dump(dicCrud, database, indent=2)
                     database.truncate()
@@ -100,13 +98,13 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
 
     def edição_usuário(userName): 
         
-        # função geral para edição do perfil do usuário, contendo menu de opções e match de funcionalidades
+        
 
-        from classesCrudCadastros import Inputs # importação da classe "Inputs"
-        classeInputs = Inputs # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+        from classesCrudCadastros import Inputs 
+        classeInputs = Inputs 
 
-        from classesCrudCadastros import crud_cadastro # importação da classe "crud_cadastro"
-        classeCrud = crud_cadastro # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+        from classesCrudCadastros import crud_cadastro 
+        classeCrud = crud_cadastro 
 
         with open('crus.py/crudCadastros.json', 'r+') as database:
 
@@ -115,29 +113,29 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
             try:
 
                 userProfile = dicCrud[userName]
-                classeCrud.print_user_user(userName) # printa os dados do usuário no console, incluindo sua senha
-                userChoise2 = classeCrud.menu_edição() # imprime um menu de opções de edição do perfil do usuário
+                classeCrud.print_user_user(userName) 
+                userChoise2 = classeCrud.menu_edição() 
 
-                match userChoise2: # match da opção de edição escolhida no menu de edições
+                match userChoise2: 
 
                     case 1:
-                        change = classeInputs.input_string('seu novo nome de usuário') # realiza o input do novo nome de usuário
+                        change = classeInputs.input_string('seu novo nome de usuário') 
                         del dicCrud[userName]
                         dicCrud[change] = userProfile
 
                     
                     case 2:
-                        change = classeInputs.input_classe_usuario_comum() # faz o input da nova classe do usuário
+                        change = classeInputs.input_classe_usuario_comum() 
                         userProfile[(userChoise2 - 2)] = change
                         dicCrud[userName] = userProfile
 
                     case 3:
-                        change = classeInputs.input_tipo_diabetes() # faz o input do novo tipo de diabetes
+                        change = classeInputs.input_tipo_diabetes() 
                         userProfile[(userChoise2 - 2)] = change
                         dicCrud[userName] = userProfile
 
                     case 4:
-                        change = str(input('\ndigite sua nova senha: ')).strip() # faz o input da nova senha do usuário
+                        change = str(input('\ndigite sua nova senha: ')).strip() 
                         userProfile[(userChoise2 - 2)] = change
                         dicCrud[userName] = userProfile
 
@@ -150,66 +148,66 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
                 print('\nnome de usuário alterado, faça login novamente para alterar outros dados')
 
 
-    def CreateOrdinaryUser(): # cria um novo usuário
+    def CreateOrdinaryUser(): 
 
-        from classesCrudCadastros import Inputs # importação da classe "Inputs"
-        classe = Inputs # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+        from classesCrudCadastros import Inputs 
+        classe = Inputs 
 
-        listaIntermediária = [] # lista utilizada na blocação dos dados do usuário
+        listaIntermediária = [] 
 
-        userName = classe.input_string('seu nome de usuário') # faz o input do nome do usuário
-        userClass = classe.input_classe_usuario_comum() # faz o input da classe do usuário
+        userName = classe.input_string('seu nome de usuário') 
+        userClass = classe.input_classe_usuario_comum() 
 
-        listaIntermediária.append(userClass) # salva a classe do usuário na lista intermediária
+        listaIntermediária.append(userClass) 
 
-        match userClass: # match para o tipo de diabetes
+        match userClass: 
 
             case 'paciente':
-                userType = classe.input_tipo_diabetes() # faz o input do tipo de diabetes
-                listaIntermediária.append(userType) # salva o tipo de diabetes na lista intermediária
+                userType = classe.input_tipo_diabetes() 
+                listaIntermediária.append(userType) 
 
             case 'profissional de saúde':
-                userType = '-' # define como "vazio" o tipo de diabetes do profissional de saúde
-                listaIntermediária.append(userType) # salva o tipo de diabetes na lista intermediária
+                userType = '-' 
+                listaIntermediária.append(userType) 
 
-        password = str(input('\ndigite a sua senha: ')).strip() # faz o input da senha do usuário
-        listaIntermediária.append(password) # salva a senha do usuário na lista intermediária
+        password = str(input('\ndigite a sua senha: ')).strip() 
+        listaIntermediária.append(password) 
 
         with open('crus.py/crudCadastros.json', 'r+') as database:
 
             dicCrud = json.load(database) 
 
-            dicCrud[userName] = listaIntermediária[:] # dicionário do crud recebe uma cópia dos dados da lista intermediária, usando como chave o nome de usuário digitado anteriormente
+            dicCrud[userName] = listaIntermediária[:] 
 
             database.seek(0)
 
             json.dump(dicCrud, database, indent=2)
         
-        listaIntermediária.clear() # limpa os dados da lista intermediária
+        listaIntermediária.clear() 
 
-    def CreateAdmUser(): # função para criar um usuário adiministrador
+    def CreateAdmUser(): 
 
-        from classesCrudCadastros import Inputs # importação da classe "Inputs"
-        classe = Inputs # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+        from classesCrudCadastros import Inputs 
+        classe = Inputs 
 
-        listaIntermediária = [] # lista utilizada na blocação dos dados do usuário
+        listaIntermediária = [] 
 
-        userName = classe.input_string('o nome de usuário do adiministrador') # faz o input do nome de usuário do adiministrador
+        userName = classe.input_string('o nome de usuário do adiministrador') 
 
-        userClass = 'adiministrador' # define a classe do usuário como adiministrador
-        listaIntermediária.append(userClass) # salva a classe do usuário na lista intermediária
+        userClass = 'adiministrador' 
+        listaIntermediária.append(userClass) 
 
-        userType = '-' # define como "vazio" o tipo de diabetes do adiministrador
-        listaIntermediária.append(userType) # salva o tipo de diabetes do adiministrador na lista intermediária
+        userType = '-' 
+        listaIntermediária.append(userType) 
 
-        password = str(input('\ndigite a sua senha de adiministrador: ')).strip() # faz o input da senha do adiministrador
-        listaIntermediária.append(password) # salva a senha do adiministrador na lista intermediária
+        password = str(input('\ndigite a sua senha de adiministrador: ')).strip() 
+        listaIntermediária.append(password) 
 
         with open('crus.py/crudCadastros.json', 'r+') as database:
 
             dicCrud = json.load(database) 
 
-            dicCrud[userName] = listaIntermediária[:] # dicionário do crud recebe uma cópia dos dados da lista intermediária, usando como chave o nome de usuário digitado anteriormente
+            dicCrud[userName] = listaIntermediária[:] 
 
             database.seek(0)
 
@@ -217,24 +215,24 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
         
         listaIntermediária.clear()
 
-    def Read(): # função para consulta dos dados pelo adiministrador
+    def Read(): 
 
-        from classesCrudCadastros import Inputs # importação da classe "Inputs"
-        classeInputs = Inputs # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+        from classesCrudCadastros import Inputs 
+        classeInputs = Inputs 
 
-        from classesCrudCadastros import crud_cadastro # importação da classe "crud_cadastro"
-        classeCrud = crud_cadastro # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+        from classesCrudCadastros import crud_cadastro 
+        classeCrud = crud_cadastro 
 
-        from classesCrudCadastros import Funcionalidades # importação da classe Funcionalidades
-        classeFuncionalidades = Funcionalidades # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+        from classesCrudCadastros import Funcionalidades 
+        classeFuncionalidades = Funcionalidades 
 
-        classeCrud.print_users() # printa o nome de todos os usuários no console
+        classeCrud.print_users() 
 
         while True:
 
             userChoise = 1
 
-            userKey = classeInputs.input_string('o nome do usuário a ser consultado') # faz o input do nome do usuário que terá os dados cadastrados
+            userKey = classeInputs.input_string('o nome do usuário a ser consultado') 
 
             with open('crus.py/crudCadastros.json', 'r') as database:
 
@@ -242,35 +240,34 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
 
                 if userKey in dicCrud:
 
-                    classeCrud.print_user(userKey) # printa os dados do usuário, sem expor a senha do usuário
+                    classeCrud.print_user(userKey) 
                     break
 
                 else:
 
                     print('\nusuário não encontrado em nosso banco de dados')
-                    userChoise = classeFuncionalidades.verificacao_de_prossegimento('tentando', 'retornar ao menu anterior') # verifica se o usuário deseja continuar tentando consultar um usuário ou retornar ao menu anterior
-
-                    if userChoise == 2: # caso o usuário tenha escolhido não continuar tentando
+                    userChoise = classeFuncionalidades.verificacao_de_prossegimento('tentando', 'retornar ao menu anterior') 
+                    if userChoise == 2: 
                         break
         
-        if userChoise == 2: # caso o usuário tenha escolhido parar, retorna o valor numérico "2" para realizar o break no código principal
+        if userChoise == 2: 
             return userChoise
     
-    def Delete(): # função para deletar um usuário
-        from classesCrudCadastros import Inputs # importação da classe "Inputs"
-        classeInputs = Inputs # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+    def Delete(): 
+        from classesCrudCadastros import Inputs 
+        classeInputs = Inputs 
 
-        from classesCrudCadastros import Funcionalidades # importação da classe "Funcionalidades"
-        classeFuncionalidades = Funcionalidades # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+        from classesCrudCadastros import Funcionalidades 
+        classeFuncionalidades = Funcionalidades 
 
-        from classesCrudCadastros import crud_cadastro # importação da classe "crud_cadastro"
-        classeCrud = crud_cadastro # instanciando a classe importada em uma variável a fim de permitir sua utilisação
+        from classesCrudCadastros import crud_cadastro 
+        classeCrud = crud_cadastro 
 
         while True:
             userChoise = 'defoult'
 
-            classeCrud.print_users() # print o nome de todos os usuários 
-            userDel = classeInputs.input_string('o nome do usuário a ser deletado') # faz o input do nome do usuário que terá seu perfil deletado
+            classeCrud.print_users() 
+            userDel = classeInputs.input_string('o nome do usuário a ser deletado') 
 
             with open('crus.py/crudCadastros.json', 'r+') as database:
 
@@ -288,9 +285,9 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
                 else:
                     print('\neste usuário não existe em nosso banco de dados')
 
-                    userChoise = classeFuncionalidades.verificacao_de_prossegimento('tentando', 'retornar ao menu anterior') # verifica se o usuári deseja continuar tentando cadas
+                    userChoise = classeFuncionalidades.verificacao_de_prossegimento('tentando', 'retornar ao menu anterior') 
 
-                    if userChoise == 2: # caso o usu
+                    if userChoise == 2: 
                         break
 
         return userChoise
@@ -410,7 +407,7 @@ class crud_cadastro: # classe para as funções mais diretamente relacionadas co
 
 class Inputs:
                 
-    def input_string(complemento):  # retorna uma string
+    def input_string(complemento):  
 
         while True:
 
@@ -437,7 +434,7 @@ class Inputs:
 
         return userNumber
 
-    def input_classe_usuario_comum():  # retorna um inteiro
+    def input_classe_usuario_comum():  
 
         while True:
 
@@ -463,7 +460,7 @@ class Inputs:
             case 2:
                 return 'profissional de saúde'
             
-    def input_tipo_diabetes():  # retorna um inteiro
+    def input_tipo_diabetes():  
 
         while True:
 
@@ -503,7 +500,7 @@ class Funcionalidades:
                 os.system('clear')
 
         def carregar_json():
-            global medicamentos  # Permite que a variável medicamentos seja usada globalmente
+            global medicamentos  
             try:
                 with open('crus.py/dados.json', 'r') as file:
                     medicamentos = json.load(file)
