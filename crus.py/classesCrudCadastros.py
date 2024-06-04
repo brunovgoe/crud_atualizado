@@ -30,7 +30,7 @@ class crud_cadastro:
         
             while True:
 
-                userChoise = input('\nqual funcionalidade você deseja utilisar?\n\n[1] criar um usuário adiministrador\n[2] consultar um usuário cadastrado\n[3] editar seus dados de usuário\n[4] deletar um usuário\n\n')
+                userChoise = input('\nqual funcionalidade você deseja utilizar?\n\n[1] criar um usuário adiministrador\n[2] consultar um usuário cadastrado\n[3] editar seus dados de usuário\n[4] deletar um usuário\n\n')
            
                 try:    
                     
