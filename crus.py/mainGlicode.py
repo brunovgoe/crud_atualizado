@@ -146,7 +146,7 @@ while True:
                                     break
                                 else:
                                     print("Opção inválida. Tente novamente.")
-                        # Função para carregar os dados do arquivo JSON
+                        
                     def carregar_dicas():
                             try:
                                 with open("crus.py/dicas_saude.json", "r") as file:
@@ -154,7 +154,7 @@ while True:
                             except FileNotFoundError:
                                 dicas = []
                             return dicas
-                        # Função para exibir todas as dicas
+                        
                     def exibir_dicas():
                             dicas = carregar_dicas()
                             if dicas:
@@ -166,19 +166,19 @@ while True:
                                     print("------------------------------------------")
                             else:  
                                 print("Nenhuma dica encontrada.")
-                        # Função para salvar os dados no arquivo JSON
+                        
                     def salvar_dicas(dicas):
                             with open("crus.py/dicas_saude.json", "w") as file: 
-                                json.dump(dicas, file, indent=4) #dump converte arquivos p/ python
-                        # Função para adicionar uma nova dica
+                                json.dump(dicas, file, indent=4) 
+                        
                     def adicionar_dica():
                             dicas = carregar_dicas()
                             nova_dica = input("Digite a nova dica para um estilo de vida saudável: ")
-                            dicas.append(nova_dica) #append para deixar em lista / ADD POR ULTIMO
+                            dicas.append(nova_dica) 
                             salvar_dicas(dicas)
                             print("Dica adicionada com sucesso.")
 
-                        # Função para atualizar uma dica existente
+                        
                     def atualizar_dica():
                             dicas = carregar_dicas()
                             exibir_dicas()
@@ -191,12 +191,12 @@ while True:
                             else:
                                 print("Índice inválido.")
 
-                        # Função para excluir uma dica
+                        
                     def excluir_dica():
                             dicas = carregar_dicas()
                             exibir_dicas()
                             indice = int(input("Digite o número da dica que deseja excluir: ")) - 1
-                            if 0 <= indice < len(dicas):  # se nao for zero ou maior que o len=tamanho da lista
+                            if 0 <= indice < len(dicas):  
                                 del dicas[indice]
                                 salvar_dicas(dicas)
                                 print("Dica excluída com sucesso.")
