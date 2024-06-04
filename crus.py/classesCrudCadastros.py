@@ -963,7 +963,7 @@ class Funcionalidades:
 
                 insulina_print = classeFuncionalidades.formatacao_unidades_de_isulina(unidades_insulina)
 
-                print(f"A quantidade de insulina a ser tomada é: {insulina_print}ml")
+                print(f"A quantidade de insulina a ser tomada é: {insulina_print}Ul")
 
             case 3:
 
