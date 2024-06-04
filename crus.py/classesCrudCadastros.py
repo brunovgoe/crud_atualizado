@@ -721,13 +721,13 @@ class Funcionalidades:
         json_file = "alimentos.json"
 
         try:
-            with open('crus.py/json_file', "r") as arquivo:
+            with open('crus.py/json_alimentos', "r") as arquivo:
                 alimentos = json.load(arquivo)
         except FileNotFoundError:
             alimentos = []
 
         def salvar_alimentos():
-            with open('json_file', "w") as arquivo:
+            with open('crus.py/json_alimentos', "w") as arquivo:
                 json.dump(alimentos, arquivo, ensure_ascii=False, indent=4)
 
         def adicionar_alimento():
